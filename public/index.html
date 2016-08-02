@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Airplanes</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+  </head>
+  <body ng-app="AirplaneApp">
+    <div ng-controller="MainCtrl">
+    <h1 class="text-center">Airplanes!!</h1>
+    <form ng-submit="add()">
+      <label for="model">Model</label>
+      <input name="model" type="text" ng-model="plane.model">
+      <label for="manufacturer">Manufacturer</label>
+      <input name="manufacturer" type="text" ng-model="plane.manufacturer">
+      <label for="engines">Engines</label>
+      <input name="engines" type="text" ng-model="plane.engines">
+      <label for="image">Image</label>
+      <input name="image" type="text" ng-model="plane.image">
+      <input type="submit" class="btn btn-info">
+    </form>
+    <div class="well" ng-repeat="plane in planes track by $index">
+      <button class="btn btn-danger" ng-click="delete(plane._id, $index)">Delete</button>
+      <h1>{{plane.model}}</h1>
+      <h3>{{plane.manufacturer}}</h3>
+      <h4>{{plane.engine}} Engine</h4>
+      <img src="{{plane.image}}">
+    </div>
+    </div>
+  </body>
+</html>
